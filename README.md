@@ -10,11 +10,6 @@ open design for convert [waveblaster](https://en.wikipedia.org/wiki/Creative_Wav
 * Yamaha DB60XG (or NEC)
 * Korg (or Topwave 32)
 
-## Power supply 
-5v
-+-12V 
-3.7~4.2v (18650) *3 =11.1~12.6V
-
 ### USB to MIDI adapter
 e.g. http://www.esi-audio.com/products/midimate/
 
@@ -24,6 +19,44 @@ e.g. http://www.esi-audio.com/products/midimate/
 * switch/jumper for switch GM/XG mode
 * LED
 
+# Power supply design
+## 5v: I recycle a AC -> 5V DC wall charger
+## +/-12V: 
+### design 1 I recycle a old Epson Printer Powe Supply [PA6509](https://goo.gl/photos/XxPtHDL55Mse3U8P7) which has 3 pins, the offset of voltage from the highest to the middle and the middle to lowest is around 16.6 ~ 17v
+parts  
+* 1* 7812
+* 1* 7912
+* 1* 500mA fuse
+* 4* 0.01uF
+* 2* 10uF (C5,6)
+* 2* 1000uF (C1,2)  C1,C2,C5 and C6 must be rated at least 50V.
+
+### design 2
+use [this circuit](http://www.circuitstoday.com/regulated-dual-power-supply-circuit) 
+extra parts 
+* 4* 1n4007
+
+### design 3
+Muffsy Hifi Dual Power Supply
+https://hackaday.io/project/5676-muffsy-hifi-dual-power-supply
+
+* 1× LM317T Texas Instruments Power Management ICs / Linear Voltage Regulators and LDOs
+* 1× LM337T Texas Instruments Power Management ICs / Linear Voltage Regulators and LDOs
+* 7× 1N4004 Discrete Semiconductors / Diodes and Rectifiers
+* 2× 300 ohm 0.25W metal film resistors, 1% tolerance
+* 3× 3300 ohm 0.25W metal film resistors, 1% tolerance
+* 2× 4.7 ohm 1W resistor
+* 5× 0.1 uF (100 nF) Ceramic disc capacitor
+* 2× 10 uF Electrolytic capacitor, 35 volts or higher
+* 1× 220 uF Electrolytic capacitor, 35 volts or higher
+* 4× 2200 uF Electrolytic capacitor, 35 volts or higher
+* 1× 16VAC wallwart adapter (15 to 18VAC can be used) Single AC, 15-18V, with 2.1 mm female connector. See the project details for sources
+* 1× 2.1 mm male power connector
+* 1× DG301 - 2 positions Screw terminal
+* 1× DG301 - 3 positions Screw terminal
+
+
+
 # Reference
 
 ## general 
@@ -31,6 +64,11 @@ e.g. http://www.esi-audio.com/products/midimate/
 * https://www.pjrc.com/teensy/td_libs_MIDI.html
 
 ## power supply
+* [12 Volt Dual Power Supply circuit](http://www.circuitdiagramworld.com/power_supply_circuit_diagram/12_Volt_Dual_Power_Supply_circuit_12579.html)
+* http://www.circuitstoday.com/regulated-dual-power-supply-circuit
+* [Wall Wart Power Supply (+/-9V to +/-15V)](http://www.musicfromouterspace.com/analogsynth_new/WALLWARTSUPPLY/WALLWARTSUPPLY.php)
+* [Muffsy Hifi Dual Power Supply](https://hackaday.io/project/5676-muffsy-hifi-dual-power-supply)
+
 
 ## waveblaster pin out
 * spdif out
